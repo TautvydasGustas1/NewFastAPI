@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./Backend:/app
+    command: uvicorn main:app --host 0.0.0.0
+
+  front:
+    build:
+      context: ./Frontend/app
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    # volumes:
+    #   # - ./Frontend/app:/app
+    #   # - /app/node_modules
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8000
+    depends_on:
+      - backend
