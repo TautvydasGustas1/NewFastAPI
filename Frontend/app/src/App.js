@@ -3,19 +3,18 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 function App() {
-  const [products, setProducts] = useState();
   const [result, setResult] = useState();
 
-  const getProducts = () => {
-    axios
-      .get('http://localhost:8000/api')
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const getProducts = () => {
+  //   axios
+  //     .get('http://localhost:8000/api')
+  //     .then((res) => {
+  //       setProducts(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,21 +24,20 @@ function App() {
 
     const formJson = Object.fromEntries(formData.entries());
 
-    let queryRequest = `?input1=${formJson.input1}&input2=${formJson.input2}`;
+    let params = formJson.input1 && { input_sentence: formJson.input1 };
 
     axios
-      .post('http://localhost:8000/api/setInfo' + queryRequest)
+      .get('http://localhost:8000/api/inference/calc', { params })
       .then((res) => {
         setResult(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="App">
@@ -56,7 +54,7 @@ function App() {
             <button type="submit">Submit</button>
           </div>
           <div className="result-container">
-            <h3>{result && result.message}</h3>
+            <h3>{result && JSON.stringify(result.results, null, 4)}</h3>
           </div>
         </div>
       </form>
