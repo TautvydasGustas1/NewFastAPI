@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
   const [products, setProducts] = useState();
-  const [slider, setSlider] = useState(50);
   const [result, setResult] = useState();
 
   const getProducts = () => {
@@ -26,7 +25,7 @@ function App() {
 
     const formJson = Object.fromEntries(formData.entries());
 
-    let queryRequest = `?input1=${formJson.input1}&input2=${formJson.input2}&slider=${slider}`;
+    let queryRequest = `?input1=${formJson.input1}&input2=${formJson.input2}`;
 
     axios
       .post('http://localhost:8000/api/setInfo' + queryRequest)
@@ -47,17 +46,6 @@ function App() {
       <h1>Frontend</h1>
       <form method="post" onSubmit={handleSubmit}>
         <div className="outer-container">
-          <div className="slidecontainer">
-            <input
-              type="range"
-              min="1"
-              max="100"
-              value={slider}
-              className="slider"
-              id="myRange"
-              onChange={(e) => setSlider(e.target.value)}
-            />
-          </div>
           <div className="input-container">
             <input
               type="text"
@@ -65,9 +53,6 @@ function App() {
               name="input1"
               style={{ marginRight: '10px' }}
             />
-            <input type="text" id="input2" name="input2" />
-          </div>
-          <div className="submit-container">
             <button type="submit">Submit</button>
           </div>
           <div className="result-container">
