@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import numpy as np
+from InferenceModel import inference_model
 
 
 app = FastAPI()
@@ -17,12 +19,26 @@ app.add_middleware(CORSMiddleware,
                    allow_headers=["*"])
 
 
+def convert_numpy(obj):
+    if isinstance(obj, np.generic):
+        return obj.item()
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    else:
+        return obj
+
+
 @app.get('/api')
 async def root():
     return {'message': "hello world"}
 
 
-@app.post('/api/setInfo')
-async def set_info(input1, input2, slider):
-    result = input1 + input2 + slider
-    return {'message': "Combined: " + result}
+@app.get('/api/inference/calc')
+async def calculate_sentiment_return(input_sentence: str = "I hate vegetables"):
+    results = inference_model.calculate_sentiment(
+        input_sentence)
+
+    # Apply conversion to each item in the dictionary
+    results_converted = {k: convert_numpy(v) for k, v in results.items()}
+
+    return {'results': results_converted}
