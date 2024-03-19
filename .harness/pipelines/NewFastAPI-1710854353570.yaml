@@ -22,8 +22,8 @@ pipeline:
                     projectID: gcp-lbg-llm-poc
                     imageName: docker-repository
                     tags:
-                      - backend
-                    dockerfile: Backend/Dockerfile
+                      - frontend
+                    dockerfile: Frontend/app/Dockerfile
           platform:
             os: Linux
             arch: Amd64
