@@ -24,6 +24,7 @@ pipeline:
                     tags:
                       - frontend
                     dockerfile: Frontend/app/Dockerfile
+                    context: Frontend/app
           platform:
             os: Linux
             arch: Amd64
