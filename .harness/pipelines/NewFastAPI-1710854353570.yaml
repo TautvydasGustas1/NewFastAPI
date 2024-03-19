@@ -23,7 +23,6 @@ pipeline:
                     imageName: docker-repository
                     tags:
                       - backend
-                    context: Backend
           platform:
             os: Linux
             arch: Amd64
