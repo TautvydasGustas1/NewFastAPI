@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_TautvydasGustas1_NewFastAPI_1710854377610-push-trigger-input-set
+  identifier: Build_TautvydasGustas1_NewFastAPI_1710854377610pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Complains_Test
+  pipeline:
+    identifier: Build_TautvydasGustas1_NewFastAPI_1710854377610
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
