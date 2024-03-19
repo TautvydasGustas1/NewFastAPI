@@ -20,7 +20,7 @@ pipeline:
                     connectorRef: GCP_Connect
                     host: europe-west1-docker.pkg.dev
                     projectID: gcp-lbg-llm-poc
-                    imageName: docker-repository
+                    imageName: frontend
                     tags:
                       - frontend
                     dockerfile: Frontend/app/Dockerfile
