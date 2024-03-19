@@ -1,5 +1,5 @@
 pipeline:
-  name: Build NewFastAPI
+  name: Build NewFastAPI_Frontend
   identifier: Build_TautvydasGustas1_NewFastAPI_1710854377610
   projectIdentifier: Complains_Test
   orgIdentifier: default
@@ -37,3 +37,4 @@ pipeline:
         connectorRef: account.Github
         repoName: TautvydasGustas1/NewFastAPI
         build: <+input>
+  tags: {}
