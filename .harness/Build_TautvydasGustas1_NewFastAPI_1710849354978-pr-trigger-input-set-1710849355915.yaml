@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_TautvydasGustas1_NewFastAPI_1710849354978-pr-trigger-input-set
+  identifier: Build_TautvydasGustas1_NewFastAPI_1710849354978prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_TautvydasGustas1_NewFastAPI_1710849354978
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
