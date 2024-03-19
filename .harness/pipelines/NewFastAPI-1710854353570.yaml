@@ -13,12 +13,17 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
                   spec:
-                    shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    connectorRef: GCP_Connect
+                    host: europe-west1-docker.pkg.dev
+                    projectID: gcp-lbg-llm-poc
+                    imageName: docker-repository
+                    tags:
+                      - backend
+                    context: Backend
           platform:
             os: Linux
             arch: Amd64
