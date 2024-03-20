@@ -4,8 +4,12 @@ metadata:
   name: react-frontend-service
   namespace: complains
 spec:
+  allocateLoadBalancerNodePorts: true
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
   ports:
   - port: 3000
     targetPort: 3000
   selector:
     app: react-frontend
+  type: LoadBalancer
