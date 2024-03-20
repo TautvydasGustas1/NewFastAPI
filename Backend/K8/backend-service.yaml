@@ -8,9 +8,8 @@ spec:
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ports:
-    port: 8000
+  - port: 8000
     targetPort: 8000
   selector:
     app: fastapi-backend
-  sessionAffinity: None
   type: LoadBalancer
