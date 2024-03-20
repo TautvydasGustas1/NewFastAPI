@@ -1,5 +1,5 @@
 pipeline:
-  name: Build NewFastAPI_Frontend
+  name: Build_Frontend
   identifier: Build_TautvydasGustas1_NewFastAPI_1710854377610
   projectIdentifier: Complains_Test
   orgIdentifier: default
