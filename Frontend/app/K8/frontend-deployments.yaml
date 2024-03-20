@@ -5,8 +5,6 @@ metadata:
     app: react-frontend
   name: react-frontend
   namespace: complains
-  resourceVersion: "1862540"
-  uid: 022c229a-c60e-49a3-8ef0-10d4696a888f
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
