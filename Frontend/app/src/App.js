@@ -27,7 +27,7 @@ function App() {
     let params = formJson.input1 && { input_sentence: formJson.input1 };
 
     axios
-      .get('http://localhost:8000/api/inference/calc', { params })
+      .get('http://34.22.226.54:8000/api/inference/calc', { params })
       .then((res) => {
         setResult(res.data);
         console.log(res.data);
